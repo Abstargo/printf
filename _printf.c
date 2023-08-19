@@ -37,38 +37,6 @@ int _printf(const char *format, ...)
 			count++;
 			i++;
 		}
-		else if (format[i] == '%' && (format[i + 1] == 'd' || format[i + 1] == 'i'))
-		{
-			integer = va_arg(list, int);
-			if (integer == 0)
-			{
-				_putchar(48);
-				count++;
-			}
-			k = 0;
-			while (integer != 0)
-			{
-				if (integer < 0)
-				{
-					_putchar('-');
-					integer = -integer;
-					count++;
-				}
-				else
-				{
-					temp = integer % 10;
-					integer /= 10;
-					array[k] = temp + 48;
-					count++;
-					k++;
-				}
-			}
-			for (; k >= 1; k--)
-			{
-				_putchar(array[k - 1]);
-			}
-			i++;
-		}
 		else if (format[i] == '%' && format[i + 1] == 's')
 		{
 			str = va_arg(list, char *);
