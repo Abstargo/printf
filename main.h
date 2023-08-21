@@ -3,8 +3,9 @@
 
 #include <stdio.h>
 #include <stdarg.h>
-int _printf(const char *format, ...);
+
 int _putchar(char c);
+int _printf(const char *format, ...);
 int print_num(va_list lkm, int cnt);
 int print_str(va_list lkm, int cnt);
 int print_char(va_list lkm, int cnt);
