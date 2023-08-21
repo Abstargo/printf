@@ -3,60 +3,50 @@
 #include <stdarg.h>
 
 /**
- * _printf - Custom printf implementation
- * @format: format string
+ * _printf - printf
+ * @format: format str
  *
- * Return: the number of characters printed
- * (excluding the null byte used to end output to strings)
+ * Return: number of bytes
  */
 int _printf(const char *format, ...)
 {
-	int i, j, k, integer, temp, count = 0;
-	va_list list;
-	char c, *str, array[12];
+	int id, cnt = 0;
+	va_list lkm;
 
-	va_start(list, format);
+	va_start(lkm, format);
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && format[2] == '\0')
-		return (-1);
-	for (i = 0; format[i] != '\0'; i++)
+	for (id = 0; format[id] != '\0'; id++)
 	{
-		if (format[i] == '\0')
+		if (format[id] == '\0')
 			break;
-		if (format[i] == '%' && format[i + 1] == 'c')
+		if (format[id] == '%')
 		{
-			c = va_arg(list, int);
-			_putchar(c);
-			count++;
-			i++;
-		}
-		else if (format[i] == '%' && format[i + 1] == '%')
-		{
-			_putchar('%');
-			count++;
-			i++;
-		}
-		else if (format[i] == '%' && format[i + 1] == 's')
-		{
-			str = va_arg(list, char *);
-			for (j = 0; str[j] != '\0'; j++)
+			if (format[id + 1] == '%')
 			{
-				if (str[j] == '\0')
-					break;
-				_putchar(str[j]);
-				count++;
+				_putchar('%');
+				cnt++;
 			}
-			i++;
+			else if (format[id + 1] == 'd' || format[id + 1] == 'i')
+			{
+				cnt = print_num(lkm, cnt);
+			}
+			else if (format[id + 1] == 'c')
+			{
+				cnt = print_char(lkm, cnt);
+			}
+			else if (format[id + 1] == 's')
+			{
+				cnt = print_str(lkm, cnt);
+			}
+			id++;
 		}
 		else
 		{
-			_putchar(format[i]);
-			count++;
+			_putchar(format[id]);
+			cnt++;
 		}
 	}
-
-	va_end(list);
-
-	return (count);
+	va_end(lkm);
+	return (cnt);
 }
