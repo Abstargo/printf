@@ -3,11 +3,13 @@
 #include <stdarg.h>
 
 /**
- * _printf - printf
- * @format: format str
+ * _printf - Custom printf implementation
+ * @format: format string
  *
- * Return: number of bytes
+ * Return: the number of characters printed
+ * (excluding the null byte used to end output to strings)
  */
+
 int _printf(const char *format, ...)
 {
 	int id, cnt = 0;
@@ -23,7 +25,7 @@ int _printf(const char *format, ...)
 	for (id = 0; format[id] != '\0'; id++)
 	{
 		if (format[id] == '\0')
-			break;
+			return(-1);
 		if (format[id] == '%')
 		{
 			if (format[id + 1] == '%')
@@ -46,5 +48,6 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(lkm);
+
 	return (cnt);
 }
