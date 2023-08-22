@@ -10,18 +10,19 @@
  */
 int str_rev(va_list lkm, int cnt)
 {
-    char *string = va_arg(lkm, char *);
-    int len = strlen(string);
-    int k, f;
+	char *string = va_arg(lkm, char *);
+	int len = strlen(string);
+	int k, f;
 
-    for (k = 0, f = len - 1; k < f; k++, f--)
-    {
-        char cup = string[k];
-        string[k] = string[f];
-        string[f] = cup;
-        _putchar(cup);
-        cnt++;
-    }
+	for (k = 0, f = len - 1; k < f; k++, f--)
+	{
+		char cup = string[k];
 
-    return (cnt);
+		string[k] = string[f];
+		string[f] = cup;
+		_putchar(cup);
+		cnt++;
+	}
+
+	return (cnt);
 }
