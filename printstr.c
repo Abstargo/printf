@@ -23,14 +23,12 @@ int print_str(va_list lkm, int cnt)
 		_putchar('l');
 		_putchar(')');
 		cnt += 6;
-
 		return (cnt);
 	}
+	if (string[cj] == '\0')
+		return (-1);
 	for (cj = 0; string[cj] != '\0'; cj++)
 	{
-		if (string[cj] == '\0')
-			return (-1);
-
 		_putchar(string[cj]);
 		cnt++;
 	}
