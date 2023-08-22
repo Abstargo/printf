@@ -1,12 +1,12 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdarg.h>
+
 /**
- * _printf - Custom printf implementation
- * @format: format string
+ * _printf - printf
+ * @format: format str
  *
- * Return: the number of characters printed
- * (excluding the null byte used to end output to strings)
+ * Return: number of bytes
  */
 int _printf(const char *format, ...)
 {
@@ -15,6 +15,8 @@ int _printf(const char *format, ...)
 
 	va_start(lkm, format);
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
+	if (format[0] == '%' && format[1] == ' ' && format[2] == '\0')
 		return (-1);
 	for (id = 0; format[id] != '\0'; id++)
 	{
@@ -28,22 +30,11 @@ int _printf(const char *format, ...)
 				cnt++;
 			}
 			else if (format[id + 1] == 'd' || format[id + 1] == 'i')
-			{
 				cnt = print_num(lkm, cnt);
-			}
 			else if (format[id + 1] == 'c')
-			{
 				cnt = print_char(lkm, cnt);
-			}
 			else if (format[id + 1] == 's')
-			{
 				cnt = print_str(lkm, cnt);
-			}
-			else if (format[id + 1] == 'r')
-			{
-                		cnt = str_rev(lkm, cnt);
-			}
-
 			id++;
 		}
 		else
@@ -53,6 +44,5 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(lkm);
-
 	return (cnt);
 }
