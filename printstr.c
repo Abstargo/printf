@@ -25,10 +25,10 @@ int print_str(va_list lkm, int cnt)
 		cnt += 6;
 		return (cnt);
 	}
-	if (string[cj] == '\0')
-		return (-1);
 	for (cj = 0; string[cj] != '\0'; cj++)
 	{
+		if (string[cj] == '\0')
+			return(cnt);
 		_putchar(string[cj]);
 		cnt++;
 	}
