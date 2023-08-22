@@ -11,7 +11,7 @@
  */
 int print_str(va_list lkm, int cnt)
 {
-	int cj;
+	int cj = 0;
 	char *string = va_arg(lkm, char *);
 
 	if (string == NULL)
