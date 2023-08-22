@@ -18,6 +18,8 @@ int _printf(const char *format, ...)
 		return (-1);
 	if (format[0] == '%' && format[1] == ' ' && format[2] == '\0')
 		return (-1);
+	if (format[0] == '\0')
+		return (0);
 	for (id = 0; format[id] != '\0'; id++)
 	{
 		if (format[id] == '\0')
