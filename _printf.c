@@ -39,6 +39,11 @@ int _printf(const char *format, ...)
 			{
 				cnt = print_str(lkm, cnt);
 			}
+			else if (format[id + 1] == 'r')
+			{
+                		cnt = str_rev(lkm, cnt);
+			}
+
 			id++;
 		}
 		else

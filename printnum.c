@@ -26,7 +26,7 @@ int print_num(va_list lkm, int cnt)
 		return (cnt);
 	}
 
-	if (raw < 0)
+	else if (raw < 0)
 	{
 		_putchar('-');
 		cnt++;
