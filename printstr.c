@@ -29,7 +29,7 @@ int print_str(va_list lkm, int cnt)
 	for (cj = 0; string[cj] != '\0'; cj++)
 	{
 		if (string[cj] == '\0')
-			break;
+			return (-1);
 
 		_putchar(string[cj]);
 		cnt++;
